@@ -1,0 +1,34 @@
+﻿@page "/Dialogs"
+@using Syncfusion.Blazor.Popups
+<h3>Dialogs</h3>
+<div>
+    <button class="e-btn dlgbtn" @onclick="@ConfirmBtn">Confirm</button>
+</div>
+<SfDialog @bind-Visible="@ConfirmDlgVisible" Width="400px" Target="#target" ShowCloseIcon="true">
+    <DialogTemplates>
+        <Header>
+            Delete Multiple Items
+        </Header>
+        <Content>
+            Are you sure you want to permanently delete these items ?
+        </Content>
+    </DialogTemplates>
+    
+    <DialogButtons>
+        <DialogButton Content="Yes" IsPrimary="true" OnClick="@HideDialog" />
+        <DialogButton Content="No" OnClick="@HideDialog" />
+    </DialogButtons>
+</SfDialog>
+@code {
+    private bool ConfirmDlgVisible { get; set; } = false;
+    
+    private void ConfirmBtn()
+    {
+        this.ConfirmDlgVisible = true;
+    }
+    private void HideDialog(Object e)
+    {
+        this.ConfirmDlgVisible = false;
+    }
+
+}
